@@ -30,7 +30,7 @@ export default function Footer() {
       style={{
         backgroundImage: `url(${coverImage.src})`,
       }}
-      className="bg-[#0F3B34] h-auto pb-6 lg:h-[378px] bg-no-repeat bg-cover bg-center "
+      className="bg-[#0F3B34] h-auto pb-6 lg:h-[378px] bg-no-repeat bg-cover bg-center mt-[80px]"
     >
       <div className=" w-full h-full custom-container  ">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-y-12 py-[6.4rem] ">

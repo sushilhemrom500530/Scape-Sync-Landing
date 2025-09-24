@@ -12,12 +12,3 @@ body {
 .custom-container {
   @apply w-full max-w-[1200px] mx-auto px-4;
 }
-
-.box-shadow-home {
-  width: 408px;
-  height: 525px;
-  rotate: -54.74 deg;
-  opacity: 1;
-  top: 1192px;
-  left: -525px;
-}

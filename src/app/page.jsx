@@ -1,4 +1,5 @@
 import Footer from "./footer";
+import FrequentlyAsk from "./view/faq-section";
 
 export default function Home() {
   return (
@@ -15,6 +16,7 @@ export default function Home() {
   "
       ></div> */}
       Home
+      <FrequentlyAsk />
       <Footer />
     </main>
   );
