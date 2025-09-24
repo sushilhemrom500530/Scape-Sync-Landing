@@ -9,6 +9,9 @@ body {
 .text-primary {
   @apply text-[#3BA334];
 }
+.custom-container {
+  @apply w-full max-w-[1200px] mx-auto px-4;
+}
 
 .box-shadow-home {
   width: 408px;
