@@ -1,5 +1,6 @@
 import Footer from "./footer";
 import FrequentlyAsk from "./view/faq-section";
+import Testimonials from "./view/testimonials";
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
   "
       ></div> */}
       Home
+      <Testimonials />
       <FrequentlyAsk />
       <Footer />
     </main>

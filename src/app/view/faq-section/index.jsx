@@ -26,7 +26,7 @@ export default function FrequentlyAsk() {
     },
   ];
   return (
-    <div className="relative overflow-hidden">
+    <div className="relative overflow-hidden mt-[85px]">
       {/* left shadow box  */}
       <div
         className="absolute left-[-250px] top-0
@@ -53,7 +53,10 @@ export default function FrequentlyAsk() {
   "
       ></div>
       <div className="w-[90%] lg:w-[996px] mx-auto ">
-        <Title />
+        <Title
+          title="Frequently Asked Questions"
+          description=" Quick answers to help you get the most out of our app."
+        />
         <Accordion questions={advertisersQuestions} />
       </div>
     </div>
