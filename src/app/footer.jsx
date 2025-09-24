@@ -9,22 +9,9 @@ import twitter from "../assets/twitter.png";
 import facebook from "../assets/facebook.png";
 import insta from "../assets/instagram.png";
 import Link from "next/link";
+import StoreCard from "./components/reuseable/apps-card";
 
 export default function Footer() {
-  const StoreCard = ({ title = "Google Play", src = "" }) => {
-    return (
-      <div className="flex items-center gap-2 p-2 border border-[#347C30] rounded cursor-pointer w-max">
-        <div className="">
-          <Image src={src} alt="apple-store" className="w-full h-full" />
-        </div>
-        <div className="text-white">
-          <h4 className="text-[10px]">Download on the</h4>
-          <h2 className="text-[22px] font-medium">{title}</h2>
-        </div>
-      </div>
-    );
-  };
-
   return (
     <section
       style={{

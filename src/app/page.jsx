@@ -1,4 +1,5 @@
 import Footer from "./footer";
+import Navbar from "./navbar";
 import FrequentlyAsk from "./view/faq-section";
 import Testimonials from "./view/testimonials";
 
@@ -16,6 +17,7 @@ export default function Home() {
     absolute
   "
       ></div> */}
+      <Navbar />
       Home
       <Testimonials />
       <FrequentlyAsk />
