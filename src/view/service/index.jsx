@@ -3,6 +3,7 @@ import dateIcon from "@/assets/date.svg";
 import trackingIcon from "@/assets/track.svg";
 import analysisIcon from "@/assets/analysis.svg";
 import secureIcon from "@/assets/protect.svg";
+import { motion } from "framer-motion";
 
 export default function ServiceSection() {
   const serviceData = [
@@ -36,20 +37,27 @@ export default function ServiceSection() {
     <div className="container mx-auto lg:px-[80px] px-4 xl:px-[120px] my-[81px]">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-9">
         {serviceData?.map((service, idx) => (
-          <div key={idx} className="flex gap-9">
+          <motion.div
+            key={idx}
+            className="flex gap-9"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: idx * 0.2 }}
+            viewport={{ once: true }}
+          >
             <div className="lg:w-[248px]">
-              <Image src={service?.icon} alt="icon" width={44} height={44} />
+              <Image src={service.icon} alt="icon" width={44} height={44} />
               <h2 className="text-lg font-bold text-[#212B36] mt-5">
-                {service?.title}
+                {service.title}
               </h2>
               <p className="text-[#637381] text-sm mt-1">
-                {service?.description}
+                {service.description}
               </p>
             </div>
             {idx !== serviceData.length - 1 && (
               <div className="w-[1px] h-full bg-[#F4F6F8] hidden lg:block"></div>
             )}
-          </div>
+          </motion.div>
         ))}
       </div>
     </div>

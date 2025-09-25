@@ -1,14 +1,19 @@
 "use client";
 import Logo from "@/components/logo";
-import React from "react";
+import React, { useState } from "react";
 import logoIcon from "@/assets/logo.svg";
 import { useForm } from "react-hook-form";
 import { FcGoogle } from "react-icons/fc";
 import FloatingLabelInput from "@/components/reuseable/input";
 import Checkbox from "@/components/reuseable/checkbox";
 import Link from "next/link";
+import axios from "axios";
+import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
 
 export default function LoginPage() {
+  const router = useRouter();
+  const [loading, setLoading] = useState(false);
   const {
     handleSubmit,
     control,
@@ -16,9 +21,29 @@ export default function LoginPage() {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = async (data) => {
+    setLoading(true);
+    try {
+      const result = await axios.post(
+        "https://apitest.softvencefsd.xyz/api/login",
+        data
+      );
+      console.log("result", result);
+      if (result?.data?.data) {
+        setLoading(false);
+        toast.success("Login successful!");
+        router.push("/auth/create-success");
+      }
+    } catch (error) {
+      setLoading(false);
+      router.push("/auth/create-success");
+      toast.error(
+        error?.response?.data?.message ||
+          "Registration failed. Please try again."
+      );
+    }
   };
+
   return (
     <div className="container mx-auto lg:px-[80px] px-4 xl:px-[120px] py-2 ">
       <Logo src={logoIcon} />
@@ -65,8 +90,14 @@ export default function LoginPage() {
               </span>
             </Link>
           </div>
-          <button type="submit" className="auth-btn-shadow btn w-full">
-            Login
+          <button
+            disabled={loading}
+            type="submit"
+            className={`${
+              loading ? "!cursor-not-allowed" : "cursor-pointer"
+            } auth-btn-shadow btn w-full flex items-center justify-center gap-2`}
+          >
+            {loading ? "Processing..." : "Login"}
           </button>
         </form>
 
@@ -84,7 +115,7 @@ export default function LoginPage() {
 
         <p className="text-sm text-center">
           Don’t have an account?{" "}
-          <Link href="#" className="text-primary font-semibold">
+          <Link href="/auth/register" className="text-primary font-semibold">
             Get started
           </Link>
         </p>

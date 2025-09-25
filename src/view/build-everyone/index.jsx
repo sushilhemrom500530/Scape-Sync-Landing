@@ -5,6 +5,7 @@ import startArrow from "@/assets/build-arrow.png";
 import rightArrow from "@/assets/build-right-frame.png";
 import centerArrow from "@/assets/center-arrow.png";
 import Title from "@/components/title";
+import { motion } from "framer-motion";
 
 export default function BuildEveryOneSection() {
   const buildData = [
@@ -77,17 +78,31 @@ export default function BuildEveryOneSection() {
         />
         <div>
           {buildData?.map((item, idx) => (
-            <div key={idx} className="relative overflow-hidden">
+            <motion.div
+              key={idx}
+              className="relative overflow-hidden"
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: idx * 0.3 }}
+              viewport={{ once: true }}
+            >
               {/* box shadow left  */}
               <div className="absolute -left-44 top-12 w-[220px] h-[250px] md:w-[280px] md:h-[350px] xl:w-[420px] xl:h-[550px] rotate-[-45.511deg] shrink-0 rounded-[800.02px] bg-[rgba(155,255,150,0.14)] blur-[150px]"></div>
               {/* box shadow right  */}
               <div className="absolute right-0 top-12 w-[251px] h-[380px] md:w-[351px] md:h-[480px] xl:w-[551px] xl:h-[800px] rotate-[-45.511deg] shrink-0 rounded-[800.02px] bg-[rgba(155,255,150,0.10)] blur-[150px]"></div>
+
               <div
                 className={`flex flex-col justify-between container mx-auto lg:px-[80px] px-4 xl:px-[120px] my-[81px] ${
                   idx === 1 ? "lg:flex-row-reverse" : " lg:flex-row"
                 }`}
               >
-                <div className="lg:w-[568px]">
+                <motion.div
+                  className="lg:w-[568px]"
+                  initial={{ opacity: 0, x: idx === 1 ? 50 : -50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.8 }}
+                  viewport={{ once: true }}
+                >
                   <button className="border border-[#3BA334] rounded-full px-5 py-[6px] font-medium text-sm text-[#3BA334]">
                     {item?.role}
                   </button>
@@ -105,8 +120,15 @@ export default function BuildEveryOneSection() {
                       {benefit}
                     </h3>
                   ))}
-                </div>
-                <div className="relative">
+                </motion.div>
+
+                <motion.div
+                  className="relative"
+                  initial={{ opacity: 0, x: idx === 1 ? -50 : 50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.8 }}
+                  viewport={{ once: true }}
+                >
                   <Image
                     src={item?.thumbnail}
                     alt="title-vactor"
@@ -115,9 +137,9 @@ export default function BuildEveryOneSection() {
                     width={0}
                   />
                   <div className="absolute bottom-0 w-full h-20 bg-gradient-to-t from-white to-transparent pointer-events-none"></div>
-                </div>
+                </motion.div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

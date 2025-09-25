@@ -5,9 +5,14 @@ import logoIcon from "@/assets/logo.svg";
 import { useRouter } from "next/navigation";
 import FloatingLabelInput from "@/components/reuseable/input";
 import { useForm } from "react-hook-form";
+import { useState } from "react";
+import toast from "react-hot-toast";
+import axios from "axios";
 
 export default function ResetPasswordPage() {
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
+
   const {
     handleSubmit,
     control,
@@ -15,8 +20,27 @@ export default function ResetPasswordPage() {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = async (data) => {
+    setLoading(true);
+    try {
+      const result = await axios.post(
+        "https://apitest.softvencefsd.xyz/api/forgot-password",
+        data
+      );
+      console.log("result", result?.data?.data);
+      if (result?.data?.data) {
+        setLoading(false);
+        localStorage.setItem("verify_email", data?.email);
+        toast.success(result?.data?.data?.message || "OTP Send successful!");
+        router.push("/auth/verify");
+      }
+    } catch (error) {
+      setLoading(false);
+      console.log("error", error);
+      toast.error(
+        error?.response?.data?.message || "OTP Send failed. Please try again."
+      );
+    }
   };
   return (
     <div className="container mx-auto lg:px-[80px] px-4 xl:px-[120px] py-2 ">
@@ -38,7 +62,10 @@ export default function ResetPasswordPage() {
           email you a link to reset your password.
         </p>
 
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 mb-12">
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className="space-y-6 mb-12 mt-10"
+        >
           <FloatingLabelInput
             name="email"
             type="email"
@@ -47,9 +74,14 @@ export default function ResetPasswordPage() {
             placeholder="Email address"
             onChange={setValue}
           />
-
-          <button type="submit" className="auth-btn-shadow btn w-full">
-            Reset Password
+          <button
+            disabled={loading}
+            type="submit"
+            className={`${
+              loading ? "!cursor-not-allowed" : "cursor-pointer"
+            } auth-btn-shadow btn w-full flex items-center justify-center gap-2`}
+          >
+            {loading ? "Processing..." : "Reset Password"}
           </button>
         </form>
       </div>

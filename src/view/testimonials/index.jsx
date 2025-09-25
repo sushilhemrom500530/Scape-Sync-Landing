@@ -5,6 +5,7 @@ import user2 from "@/assets/Ellipse 452 (1).svg";
 import user3 from "@/assets/Ellipse 452 (2).svg";
 import Image from "next/image";
 import Title from "@/components/title";
+import { motion } from "framer-motion";
 
 export default function Testimonials() {
   const userData = [
@@ -32,45 +33,47 @@ export default function Testimonials() {
   ];
 
   return (
-    <div>
-      <div
-        style={{
-          backgroundImage: `url(${testimonialCover.src})`,
-        }}
-        className="custom-container bg-no-repeat bg-cover bg-center"
-      >
-        <Title
-          title="What Our Users Are Saying"
-          description="Real stories from clients, employees, and business owners who use our app every day."
-          descriptionStyle="w-full md:w-[455px] mx-auto"
-        />
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-[60px] mb-[85px]">
-          {userData?.map((user, idx) => (
-            <div
-              key={idx}
-              className="max-w-sm p-6 rounded-[22px] bg-white shadow-[0_16px_32px_-4px_rgba(146,171,145,0.1)] flex flex-col gap-6"
-            >
-              {/* User Info */}
-              <div className="flex items-center gap-3">
-                <Image
-                  src={user?.thumbnail}
-                  alt="Farzana H."
-                  width={48}
-                  height={48}
-                />
-                <div className="flex flex-col">
-                  <span className="font-medium text-base text-[#212B36]">
-                    {user?.name}
-                  </span>
-                  <span className="text-sm text-[#637381]">{user?.role}</span>
-                </div>
+    <div
+      style={{
+        backgroundImage: `url(${testimonialCover.src})`,
+      }}
+      className="custom-container bg-no-repeat bg-cover bg-center mt-10 mb-20"
+    >
+      <Title
+        title="What Our Users Are Saying"
+        description="Real stories from clients, employees, and business owners who use our app every day."
+        descriptionStyle="w-full md:w-[455px] mx-auto"
+      />
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-[60px] mb-[85px]">
+        {userData?.map((user, idx) => (
+          <motion.div
+            key={idx}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: idx * 0.2 }}
+            viewport={{ once: true }}
+            className="max-w-sm p-6 rounded-[22px] bg-white shadow-[0_16px_32px_-4px_rgba(146,171,145,0.1)] flex flex-col gap-6"
+          >
+            {/* User Info */}
+            <div className="flex items-center gap-3">
+              <Image
+                src={user?.thumbnail}
+                alt="Farzana H."
+                width={48}
+                height={48}
+              />
+              <div className="flex flex-col">
+                <span className="font-medium text-base text-[#212B36]">
+                  {user?.name}
+                </span>
+                <span className="text-sm text-[#637381]">{user?.role}</span>
               </div>
-
-              {/* Testimonial */}
-              <p className="text-[#637381] text-base">{user?.description}</p>
             </div>
-          ))}
-        </div>
+
+            {/* Testimonial */}
+            <p className="text-[#637381] text-base">{user?.description}</p>
+          </motion.div>
+        ))}
       </div>
     </div>
   );

@@ -5,9 +5,14 @@ import { useRouter } from "next/navigation";
 import FloatingLabelInput from "@/components/reuseable/input";
 import { FaChevronLeft } from "react-icons/fa";
 import { useForm } from "react-hook-form";
+import { useState } from "react";
+import axios from "axios";
+import toast from "react-hot-toast";
 
 export default function NewPasswordPage() {
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
+
   const {
     handleSubmit,
     control,
@@ -15,8 +20,30 @@ export default function NewPasswordPage() {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = async (data) => {
+    setLoading(true);
+    const formData = {
+      ...data,
+      token: "pgHUpTTvTuLJHwRfaAORKBECNeKg1dbctPyYSBQs",
+    };
+    try {
+      const result = await axios.post(
+        "https://apitest.softvencefsd.xyz/api/reset-password",
+        formData
+      );
+      console.log("result", result);
+      if (result?.data?.data) {
+        setLoading(false);
+        toast.success("Password Changed successful!");
+        router.push("/auth/password-changed");
+      }
+    } catch (error) {
+      setLoading(false);
+      toast.error(
+        error?.response?.data?.message ||
+          "Password Changed failed. Please try again."
+      );
+    }
   };
   return (
     <div className="container mx-auto lg:px-[80px] px-4 xl:px-[120px] py-2 ">
@@ -38,7 +65,10 @@ export default function NewPasswordPage() {
           email you a link to reset your password.
         </p>
 
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 mb-12">
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className="space-y-6 mb-12 mt-10"
+        >
           <FloatingLabelInput
             name="password"
             type="password"
@@ -60,9 +90,14 @@ export default function NewPasswordPage() {
             placeholder="Confirm Password"
             onChange={setValue}
           />
-
-          <button type="submit" className="auth-btn-shadow btn w-full">
-            Update Password
+          <button
+            disabled={loading}
+            type="submit"
+            className={`${
+              loading ? "!cursor-not-allowed" : "cursor-pointer"
+            } auth-btn-shadow btn w-full flex items-center justify-center gap-2`}
+          >
+            {loading ? "Processing..." : " Update Password"}
           </button>
         </form>
       </div>

@@ -5,6 +5,7 @@ import projectFrame from "@/assets/project-frame.png";
 import titleArrow from "@/assets/title-vctor.svg";
 import Image from "next/image";
 import StoreCard from "@/components/reuseable/apps-card";
+import { motion } from "framer-motion";
 
 export default function BannerSection() {
   return (
@@ -19,9 +20,15 @@ export default function BannerSection() {
             rounded-[630.073px] bg-[rgba(157,255,153,0.1)] blur-[150px] absolute right-0 lg:right-28 lg:top-20 hidden lg:block"
       ></div>
 
-      <div className="container mx-auto lg:px-[80px] xl:px-[120px] mt-12 ">
+      <div className="container mx-auto lg:px-[80px] xl:px-[120px] mt-12">
         <div className="flex items-center flex-col lg:flex-row">
-          <div className="lg:w-[655px]">
+          <motion.div
+            className="lg:w-[655px]"
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1, ease: "easeOut" }}
+            viewport={{ once: true }}
+          >
             <div className="relative">
               <Image
                 src={shapIcon}
@@ -30,9 +37,15 @@ export default function BannerSection() {
                 height={0}
                 width={0}
               />
-              <h1 className="text-3xl md:text-5xl lg:text-[84px] font-bold">
+              <motion.h1
+                className="text-3xl md:text-5xl lg:text-[84px] font-bold"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.2 }}
+                viewport={{ once: true }}
+              >
                 All Your Jobs One Smart App
-              </h1>
+              </motion.h1>
               <Image
                 src={titleArrow}
                 alt="title-vactor"
@@ -42,13 +55,25 @@ export default function BannerSection() {
               />
             </div>
 
-            <p className="text-base text-[#637381] mt-4">
+            <motion.p
+              className="text-base text-[#637381] mt-4"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              viewport={{ once: true }}
+            >
               Built for business owners, employees, and clients streamline job
               scheduling, service tracking, and team management in one powerful
               app.
-            </p>
+            </motion.p>
 
-            <div className="flex items-center  flex-col md:flex-row gap-5 w-max mt-16">
+            <motion.div
+              className="flex items-center flex-col md:flex-row gap-5 w-max mt-16"
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.6 }}
+              viewport={{ once: true }}
+            >
               <StoreCard
                 title="App Store"
                 src={appleIcon}
@@ -59,9 +84,16 @@ export default function BannerSection() {
                 src={playstore}
                 textStyle="text-black"
               />
-            </div>
-          </div>
-          <div className="relative hidden md:block">
+            </motion.div>
+          </motion.div>
+
+          <motion.div
+            className="relative hidden md:block"
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
+            viewport={{ once: true }}
+          >
             <Image
               src={projectFrame}
               alt="title-vactor"
@@ -70,7 +102,7 @@ export default function BannerSection() {
               width={0}
             />
             <div className="absolute bottom-0 w-full h-20 bg-gradient-to-t from-white to-transparent pointer-events-none"></div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </div>

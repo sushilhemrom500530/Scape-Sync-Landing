@@ -1,6 +1,6 @@
 "use client";
 import Logo from "@/components/logo";
-import React from "react";
+import React, { useState } from "react";
 import logoIcon from "@/assets/logo.svg";
 import { useForm } from "react-hook-form";
 import { FcGoogle } from "react-icons/fc";
@@ -8,8 +8,12 @@ import FloatingLabelInput from "@/components/reuseable/input";
 import Checkbox from "@/components/reuseable/checkbox";
 import Link from "next/link";
 import axios from "axios";
+import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
 
 export default function RegisterPage() {
+  const router = useRouter();
+  const [loading, setLoading] = useState(false);
   const {
     handleSubmit,
     control,
@@ -18,12 +22,25 @@ export default function RegisterPage() {
   } = useForm();
 
   const onSubmit = async (data) => {
-    console.log(data);
-    const result = await axios.post(
-      "https://apitest.softvencefsd.xyz/api/register",
-      data
-    );
-    console.log(result);
+    setLoading(true);
+    try {
+      const result = await axios.post(
+        "https://apitest.softvencefsd.xyz/api/register",
+        data
+      );
+      console.log("result", result);
+      if (result?.data?.data) {
+        setLoading(false);
+        toast.success("Registration successful!");
+        router.push("/auth/login");
+      }
+    } catch (error) {
+      setLoading(false);
+      toast.error(
+        error?.response?.data?.message ||
+          "Registration failed. Please try again."
+      );
+    }
   };
 
   return (
@@ -109,8 +126,14 @@ export default function RegisterPage() {
               colorClass=" border-[#919EAB52] checked:border-[#3BA334] checked:bg-[#3BA334] "
             />
           </div>
-          <button type="submit" className="auth-btn-shadow btn w-full">
-            Create Account
+          <button
+            disabled={loading}
+            type="submit"
+            className={`${
+              loading ? "!cursor-not-allowed" : "cursor-pointer"
+            } auth-btn-shadow btn w-full flex items-center justify-center gap-2`}
+          >
+            {loading ? "Creating Account..." : "Create Account"}
           </button>
         </form>
 
@@ -131,13 +154,6 @@ export default function RegisterPage() {
             Login
           </Link>
         </p>
-
-        {/* <p className="text-sm text-center">
-          Don’t have an account?{" "}
-          <Link href="#" className="text-primary font-semibold">
-            Get started
-          </Link>
-        </p> */}
       </div>
     </div>
   );
