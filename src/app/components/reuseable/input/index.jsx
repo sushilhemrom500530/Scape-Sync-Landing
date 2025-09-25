@@ -71,7 +71,7 @@ const FloatingLabelInput = ({
       </div>
       {error && (
         <div className="flex items-center justify-end text-red-500 mt-1">
-          <span className="mr-1">
+          <span className="mr-1 text-xs">
             {error.message || "This field is required"}
           </span>
           <Image
