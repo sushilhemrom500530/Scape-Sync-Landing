@@ -2,12 +2,12 @@ import coverImage from "@/assets/footer-musk.png";
 import Logo from "./components/logo";
 import logoImage from "@/assets/footer-logo.png";
 import Image from "next/image";
-import appleIcon from "../assets/apple.png";
-import playstore from "../assets/playstore.png";
-import youtube from "../assets/youtube.png";
-import twitter from "../assets/twitter.png";
-import facebook from "../assets/facebook.png";
-import insta from "../assets/instagram.png";
+import appleIcon from "@/assets/apple.png";
+import playstore from "@/assets/playstore.png";
+import youtube from "@/assets/youtube.png";
+import twitter from "@/assets/twitter.png";
+import facebook from "@/assets/facebook.png";
+import insta from "@/assets/instagram.png";
 import Link from "next/link";
 import StoreCard from "./components/reuseable/apps-card";
 

@@ -29,29 +29,12 @@ export default function FrequentlyAsk() {
     <div className="relative overflow-hidden mt-[85px]">
       {/* left shadow box  */}
       <div
-        className="absolute left-[-250px] top-0
-    w-[505.61px] 
-    h-[732.903px] 
-    rotate-[19.594deg] 
-    flex-shrink-0 
-    rounded-[732.903px] 
-    bg-[rgba(155,255,150,0.1)] 
-    blur-[150px]
-  "
+        className="absolute lg:left-[-250px] lg:top-0 -top-20 w-[250px] h-[362px] lg:w-[505px] lg:h-[732px] rotate-[19.594deg] flex-shrink-0 
+    rounded-[732.903px] bg-[rgba(155,255,150,0.1)]  blur-[150px]"
       ></div>
       {/* right shadow box  */}
-      <div
-        className="
-        absolute bottom-0 right-[-250px]
-    w-[505.61px] 
-    h-[732.903px] 
-    rotate-[19.594deg] 
-    flex-shrink-0 
-    rounded-[732.903px] 
-    bg-[rgba(155,255,150,0.1)] 
-    blur-[150px]
-  "
-      ></div>
+      <div className=" absolute lg:bottom-0 w-[250px] h-[362px] right-0 -bottom-20 lg:right-[-250px] lg:w-[505px] lg:h-[732.903px] rotate-[19.594deg] flex-shrink-0 rounded-[732.903px] bg-[rgba(155,255,150,0.1)] blur-[150px]  "></div>
+
       <div className="w-[90%] lg:w-[996px] mx-auto ">
         <Title
           title="Frequently Asked Questions"

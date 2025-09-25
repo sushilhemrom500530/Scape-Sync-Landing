@@ -18,11 +18,9 @@ function Accordion({ questions }) {
         <div
           key={index}
           className="p-6 mb-4 rounded-md cursor-pointer bg-inherit border border-[#C7E6C5] "
+          onClick={() => toggleAccordion(index)}
         >
-          <div
-            className="flex items-center justify-between"
-            onClick={() => toggleAccordion(index)}
-          >
+          <div className="flex items-center justify-between">
             <h4 className="text-base font-medium text-[#212B36]">
               {item?.title}
             </h4>

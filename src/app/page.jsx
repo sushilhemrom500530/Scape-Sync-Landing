@@ -1,24 +1,18 @@
 import Footer from "./footer";
 import Navbar from "./navbar";
+import BannerSection from "./view/banner";
+import BuildEveryOneSection from "./view/build-everyone";
 import FrequentlyAsk from "./view/faq-section";
+import ServiceSection from "./view/service";
 import Testimonials from "./view/testimonials";
 
 export default function Home() {
   return (
-    <main className="relative ">
-      {/* <div
-        className="
-    w-[408.4977px] 
-    h-[525.5527px] 
-    -rotate-[54.74deg] 
-    opacity-100 
-    top-[1192px] 
-    left-[-525px] 
-    absolute
-  "
-      ></div> */}
+    <main className="relative lg:overflow-hidden ">
       <Navbar />
-      Home
+      <BannerSection />
+      <ServiceSection />
+      <BuildEveryOneSection />
       <Testimonials />
       <FrequentlyAsk />
       <Footer />
