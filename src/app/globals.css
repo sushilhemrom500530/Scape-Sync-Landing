@@ -16,3 +16,7 @@ body {
 .btn {
   @apply rounded-[8px] bg-[#3BA334] hover:bg-[#0d9903] [transition:0.3s] shadow-[0_8px_16px_0_rgba(57,164,50,0.24)] px-5 md:px-[26px] py-[10px] text-base text-white font-semibold cursor-pointer;
 }
+
+.auth-btn-shadow {
+  @apply rounded-[8px] bg-[linear-gradient(0deg,rgba(0,0,0,0.20)_0%,rgba(0,0,0,0.20)_100%),#49AE44] shadow-[0_8px_16px_0_rgba(57,164,50,0.24)];
+}
