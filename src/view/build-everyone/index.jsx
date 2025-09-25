@@ -1,11 +1,10 @@
-import Title from "@/app/components/title";
 import Image from "next/image";
-import performanceImage from "../../../assets/performance.png";
-import progressImage from "../../../assets/progress.png";
-import trackImage from "../../../assets/track-navigate.png";
-import startArrow from "../../../assets/build-arrow.png";
-import rightArrow from "../../../assets/build-right-frame.png";
-import centerArrow from "../../../assets/center-arrow.png";
+import performanceImage from "@/assets/performance.png";
+import progressImage from "@/assets/progress.png";
+import startArrow from "@/assets/build-arrow.png";
+import rightArrow from "@/assets/build-right-frame.png";
+import centerArrow from "@/assets/center-arrow.png";
+import Title from "@/components/title";
 
 export default function BuildEveryOneSection() {
   const buildData = [

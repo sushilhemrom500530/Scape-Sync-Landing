@@ -1,10 +1,10 @@
-import Footer from "./footer";
+import BannerSection from "@/view/banner";
 import Navbar from "./navbar";
-import BannerSection from "./view/banner";
-import BuildEveryOneSection from "./view/build-everyone";
-import FrequentlyAsk from "./view/faq-section";
-import ServiceSection from "./view/service";
-import Testimonials from "./view/testimonials";
+import ServiceSection from "@/view/service";
+import BuildEveryOneSection from "@/view/build-everyone";
+import Testimonials from "@/view/testimonials";
+import FrequentlyAsk from "@/view/faq-section";
+import Footer from "./footer";
 
 export default function Home() {
   return (

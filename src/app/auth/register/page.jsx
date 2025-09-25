@@ -1,12 +1,13 @@
 "use client";
-import Logo from "@/app/components/logo";
+import Logo from "@/components/logo";
 import React from "react";
 import logoIcon from "@/assets/logo.svg";
 import { useForm } from "react-hook-form";
 import { FcGoogle } from "react-icons/fc";
-import FloatingLabelInput from "@/app/components/reuseable/input";
-import Checkbox from "@/app/components/reuseable/checkbox";
+import FloatingLabelInput from "@/components/reuseable/input";
+import Checkbox from "@/components/reuseable/checkbox";
 import Link from "next/link";
+import axios from "axios";
 
 export default function RegisterPage() {
   const {
@@ -16,15 +17,20 @@ export default function RegisterPage() {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     console.log(data);
+    const result = await axios.post(
+      "https://apitest.softvencefsd.xyz/api/register",
+      data
+    );
+    console.log(result);
   };
 
   return (
     <div className="container mx-auto lg:px-[80px] px-4 xl:px-[120px] py-2 ">
       <Logo src={logoIcon} />
 
-      <div className="lg:w-[480px] mx-auto mb-12">
+      <div className="lg:w-[480px] mx-auto mb-12 mt-10">
         <div className="text-center mb-16">
           <h1 className="text-xl md:text-2xl font-bold">Create your Account</h1>
           <p className="text-base text-[#637381] mt-2">
@@ -68,7 +74,12 @@ export default function RegisterPage() {
             name="password_confirmation"
             type="password"
             control={control}
-            rules={{ required: "Password is required" }}
+            rules={{
+              required: "Confirm password is required",
+              validate: (value) =>
+                value === control._formValues.password ||
+                "Passwords do not match",
+            }}
             placeholder="Confirm Password"
             onChange={setValue}
           />

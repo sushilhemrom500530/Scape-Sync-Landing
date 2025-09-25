@@ -1,5 +1,5 @@
 import Image from "next/image";
-import arrowIcon from "../../../assets/title-arrow.png";
+import arrowIcon from "@/assets/title-arrow.png";
 
 export default function Title({
   title = "",

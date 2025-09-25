@@ -1,5 +1,5 @@
-import Accordion from "@/app/components/accordion";
-import Title from "@/app/components/title";
+import Accordion from "@/components/accordion";
+import Title from "@/components/title";
 import React from "react";
 
 export default function FrequentlyAsk() {

@@ -1,12 +1,12 @@
 "use client";
-import Logo from "@/components/logo";
-import { FaChevronLeft } from "react-icons/fa6";
 import logoIcon from "@/assets/logo.svg";
+import Logo from "@/components/logo";
 import { useRouter } from "next/navigation";
 import FloatingLabelInput from "@/components/reuseable/input";
+import { FaChevronLeft } from "react-icons/fa";
 import { useForm } from "react-hook-form";
 
-export default function ResetPasswordPage() {
+export default function NewPasswordPage() {
   const router = useRouter();
   const {
     handleSubmit,
@@ -31,7 +31,7 @@ export default function ResetPasswordPage() {
           Back
         </button>
         <h1 className="text-xl md:text-[32px] font-bold text-[#212B36] mb-4 mt-6">
-          Forgot your password?
+          Enter your new password
         </h1>
         <p className="text-base text-[#637381]">
           Please enter the email address associated with your account, and we'll
@@ -40,16 +40,29 @@ export default function ResetPasswordPage() {
 
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 mb-12">
           <FloatingLabelInput
-            name="email"
-            type="email"
+            name="password"
+            type="password"
             control={control}
-            rules={{ required: "Email is required" }}
-            placeholder="Email address"
+            rules={{ required: "Password is required" }}
+            placeholder="New Password"
+            onChange={setValue}
+          />
+          <FloatingLabelInput
+            name="password_confirmation"
+            type="password"
+            control={control}
+            rules={{
+              required: "Confirm password is required",
+              validate: (value) =>
+                value === control._formValues.password ||
+                "Passwords do not match",
+            }}
+            placeholder="Confirm Password"
             onChange={setValue}
           />
 
           <button type="submit" className="auth-btn-shadow btn w-full">
-            Reset Password
+            Update Password
           </button>
         </form>
       </div>

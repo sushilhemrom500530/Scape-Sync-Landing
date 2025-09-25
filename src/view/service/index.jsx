@@ -1,8 +1,8 @@
 import Image from "next/image";
-import dateIcon from "../../../assets/date.svg";
-import trackingIcon from "../../../assets/track.svg";
-import analysisIcon from "../../../assets/analysis.svg";
-import secureIcon from "../../../assets/protect.svg";
+import dateIcon from "@/assets/date.svg";
+import trackingIcon from "@/assets/track.svg";
+import analysisIcon from "@/assets/analysis.svg";
+import secureIcon from "@/assets/protect.svg";
 
 export default function ServiceSection() {
   const serviceData = [

@@ -1,10 +1,10 @@
-import StoreCard from "@/app/components/reuseable/apps-card";
 import appleIcon from "@/assets/light-apple.png";
 import playstore from "@/assets/light-playstore.png";
 import shapIcon from "@/assets/title-vector.png";
 import projectFrame from "@/assets/project-frame.png";
 import titleArrow from "@/assets/title-vctor.svg";
 import Image from "next/image";
+import StoreCard from "@/components/reuseable/apps-card";
 
 export default function BannerSection() {
   return (

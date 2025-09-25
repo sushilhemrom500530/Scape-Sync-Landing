@@ -1,5 +1,5 @@
 import React from "react";
-import Logo from "./components/logo";
+import Logo from "@/components/logo";
 import logoIcon from "../assets/logo.svg";
 import Link from "next/link";
 

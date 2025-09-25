@@ -1,10 +1,10 @@
-import Title from "@/app/components/title";
 import React from "react";
 import testimonialCover from "@/assets/test-cover.png";
-import user1 from "../../../assets/Ellipse 452.svg";
-import user2 from "../../../assets/Ellipse 452 (1).svg";
-import user3 from "../../../assets/Ellipse 452 (2).svg";
+import user1 from "@/assets/Ellipse 452.svg";
+import user2 from "@/assets/Ellipse 452 (1).svg";
+import user3 from "@/assets/Ellipse 452 (2).svg";
 import Image from "next/image";
+import Title from "@/components/title";
 
 export default function Testimonials() {
   const userData = [
