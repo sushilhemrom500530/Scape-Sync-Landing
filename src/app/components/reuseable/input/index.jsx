@@ -1,15 +1,18 @@
 import Image from "next/image";
+import { useState } from "react";
 import { useController } from "react-hook-form";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const FloatingLabelInput = ({
   name,
-  type,
+  type = "text",
   control,
   rules,
   placeholder,
   colorClass,
   id = "input",
 }) => {
+  const [showPassword, setShowPassword] = useState(false);
   const {
     field: { onChange, onBlur, value, ref },
     fieldState: { error },
@@ -24,7 +27,9 @@ const FloatingLabelInput = ({
     <div>
       <div className="relative mt-2 w-full">
         <input
-          type={type}
+          type={
+            type === "password" ? (showPassword ? "text" : "password") : type
+          }
           id={id}
           value={value}
           onChange={onChange}
@@ -41,9 +46,23 @@ const FloatingLabelInput = ({
   `}
         />
 
+        {type === "password" && (
+          <button
+            type="button"
+            className="absolute right-2 top-[14px] cursor-pointer"
+            onClick={() => setShowPassword(!showPassword)}
+          >
+            {showPassword ? (
+              <FaEyeSlash size={18} color="#637381" />
+            ) : (
+              <FaEye size={18} color="#637381" />
+            )}
+          </button>
+        )}
+
         <label
           htmlFor={id}
-          className={`absolute top-2 left-1 origin-[0] -translate-y-4 scale-75 transform cursor-text select-none bg-white px-2 text-base text-gray-500 duration-300 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:scale-100 peer-focus:top-2 peer-focus:-translate-y-4 peer-focus:scale-75 peer-focus:px-2 peer-focus:text-[#919EAB] z-50 ${
+          className={`absolute top-2 left-1 origin-[0] -translate-y-4 scale-75 transform cursor-text select-none bg-white px-2 text-base text-[#212B36] duration-300 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:scale-100 peer-focus:top-2 peer-focus:-translate-y-4 peer-focus:scale-75 peer-focus:px-2 peer-focus:text-[#919EAB] z-50 ${
             error ? "bg-red-50 focus:bg-white rounded-full" : ""
           }`}
         >
