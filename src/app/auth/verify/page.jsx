@@ -41,7 +41,6 @@ export default function VerifyPage() {
       }
     } catch (error) {
       setLoading(false);
-      router.push("/auth/new-password");
       toast.error(
         error?.response?.data?.message ||
           "OTP Validate failed. Please try again."

@@ -36,7 +36,6 @@ export default function LoginPage() {
       }
     } catch (error) {
       setLoading(false);
-      router.push("/auth/create-success");
       toast.error(
         error?.response?.data?.message ||
           "Registration failed. Please try again."
