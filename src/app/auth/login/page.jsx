@@ -48,7 +48,7 @@ export default function LoginPage() {
     <div className="container mx-auto lg:px-[80px] px-4 xl:px-[120px] py-2 ">
       <Logo src={logoIcon} />
 
-      <div className="lg:w-[480px] mx-auto mb-12 mt-10">
+      <div className="md:w-[480px] mx-auto mb-12 mt-10">
         <div className="text-center mb-16">
           <h1 className="text-xl md:text-2xl font-bold">
             Welcome to ScapeSync

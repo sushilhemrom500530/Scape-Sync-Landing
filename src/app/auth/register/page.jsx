@@ -47,7 +47,7 @@ export default function RegisterPage() {
     <div className="container mx-auto lg:px-[80px] px-4 xl:px-[120px] py-2 ">
       <Logo src={logoIcon} />
 
-      <div className="lg:w-[480px] mx-auto mb-12 mt-10">
+      <div className="md:w-[480px] mx-auto mb-12 mt-10">
         <div className="text-center mb-16">
           <h1 className="text-xl md:text-2xl font-bold">Create your Account</h1>
           <p className="text-base text-[#637381] mt-2">
@@ -55,7 +55,7 @@ export default function RegisterPage() {
           </p>
         </div>
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 mb-12">
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <FloatingLabelInput
               name="first_name"
               control={control}

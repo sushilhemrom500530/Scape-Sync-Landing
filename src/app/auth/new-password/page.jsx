@@ -49,7 +49,7 @@ export default function NewPasswordPage() {
     <div className="container mx-auto lg:px-[80px] px-4 xl:px-[120px] py-2 ">
       <Logo src={logoIcon} />
 
-      <div className="lg:w-[480px] mx-auto my-20 ">
+      <div className="md:w-[480px] mx-auto my-20 ">
         <button
           onClick={() => router.back()}
           className="flex items-center gap-2 text-[#3BA334] px-3 py-1 text-sm font-bold rounded-lg cursor-pointer "

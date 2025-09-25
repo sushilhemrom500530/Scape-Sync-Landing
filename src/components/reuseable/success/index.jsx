@@ -8,11 +8,11 @@ export default function SuccessContent({
   description = "",
   url = "",
   buttonTitle = "",
-  className = "lg:w-[480px] mx-auto",
+  className = "md:w-[480px] mx-auto",
 }) {
   return (
     <div>
-      <div className={`${className} `}>
+      <div className={`${className} my-8 `}>
         <div className="flex items-center justify-center">
           <Image src={successImage} alt="success-image" height={0} width={0} />
         </div>

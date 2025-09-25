@@ -66,7 +66,7 @@ export default function VerifyPage() {
     <div className="container mx-auto lg:px-[80px] px-4 xl:px-[120px] py-2 h-screen">
       <Logo src={logoIcon} />
       <div className=" flex flex-col justify-center h-[calc(100vh-84px)]">
-        <div className="lg:w-[480px] mx-auto pb-12 ">
+        <div className="md:w-[480px] mx-auto pb-12 ">
           <button
             onClick={() => router.back()}
             className="flex items-center gap-2 text-[#3BA334] px-3 py-1 text-sm font-bold rounded-lg cursor-pointer mb-6"
