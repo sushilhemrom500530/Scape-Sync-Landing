@@ -62,7 +62,7 @@ const FloatingLabelInput = ({
 
         <label
           htmlFor={id}
-          className={`absolute top-2 left-1 origin-[0] -translate-y-4 scale-75 transform cursor-text select-none bg-white px-2 text-base text-[#212B36] duration-300 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:scale-100 peer-focus:top-2 peer-focus:-translate-y-4 peer-focus:scale-75 peer-focus:px-2 peer-focus:text-[#919EAB] z-50 ${
+          className={`absolute top-2 left-1 origin-[0] -translate-y-4 scale-75 transform cursor-text select-none bg-white px-2 text-base text-[#919eab] duration-300 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:scale-100 peer-focus:top-2 peer-focus:-translate-y-4 peer-focus:scale-75 peer-focus:px-2 peer-focus:text-[#919EAB] z-50 ${
             error ? "bg-red-50 focus:bg-white rounded-full" : ""
           }`}
         >
